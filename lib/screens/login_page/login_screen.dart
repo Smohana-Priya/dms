@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../base/base_state.dart';
 // import '../../router.dart';
+import '../../router.dart';
 import 'login_bloc.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -149,7 +150,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                       ),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, AppRoutes.otpScreen);
+                                  },
                                   child: const Text(
                                     Constants.next,
                                     style: TextStyle(
@@ -159,7 +163,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontSize: 14),
                                   ))),
                           const SizedBox(
-                            height: 10,
+                            height: 15,
                           ),
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.center,

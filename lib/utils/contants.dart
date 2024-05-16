@@ -9,6 +9,12 @@ class Constants {
   static const String privacy = "Privacy Policy";
   static const String tc = "T&C";
   static const String next = "Next";
+  static const String verify = "Verify";
+  static const String resend = " Resend";
+  static const String otp = "OTP Verification";
+  static const String otp2 = "Don't receive the OTP ? ";
+  static const String enterCode =
+      "Enter the code form the SMS we to +91 9345*****51";
   static const String success = 'success';
   static const String success2 = 'SUCCESS';
   static const String failure = 'failed';

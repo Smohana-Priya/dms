@@ -1,13 +1,13 @@
+// ignore_for_file: library_private_types_in_public_api
 
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:pinput/pinput.dart';
 
 import '../../base/base_state.dart';
+
 import '../../utils/color_resources.dart';
+import '../../utils/contants.dart';
 import 'otp_bloc.dart';
 
 class OTPScreen extends StatefulWidget {
@@ -21,12 +21,18 @@ class _OTPScreenState extends State<OTPScreen> {
   late OTPBloc bloc;
   final _formKey = GlobalKey<FormState>();
   TextEditingController mobileNo = TextEditingController();
+  final _pinCntrl = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     bloc = BlocProvider.of<OTPBloc>(context);
+  }
 
+  @override
+  void dispose() {
+    _pinCntrl.dispose();
+    super.dispose();
   }
 
   @override
@@ -39,142 +45,153 @@ class _OTPScreenState extends State<OTPScreen> {
           builder: (BuildContext context, BaseState state) {
             if (state is InitialState) {
               return const Center(
-                child: Text('New DAT888888888888888888888A'),
+                child: Text('Loading state'),
               );
-            } else if (state is SuccessState) {
-
-            }
-            return  SafeArea(
+            } else if (state is SuccessState) {}
+            return SafeArea(
               child: Scaffold(
-
                 body: Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: Form(
                     key: _formKey,
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[otpScreen()],
-                    ),
-                  ),
-                ),
-                bottomSheet: SizedBox(
-                  width: MediaQuery.of(context).size.width / 1.1,
-                  height: MediaQuery.of(context).size.height / 9,
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width / 1.1,
-                        height: MediaQuery.of(context).size.height / 15,
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.orange,
-                            textStyle: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 10,
-                                fontStyle: FontStyle.normal),
-                            shape: const BeveledRectangleBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(1))),
-                            shadowColor: Colors.lightBlue,
-                          ),
-                          onPressed: () {
-
-                          },
-                          child: const Text('Elevated Button'),
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Align(
+                                alignment: AlignmentDirectional.topStart,
+                                child: IconButton(
+                                  icon: const Icon(Icons.arrow_back_ios),
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                )),
+                            const Text(
+                              Constants.otp,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorResource.color191919,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 20),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+                            const Text(
+                              Constants.enterCode,
+                              style: TextStyle(
+                                  color: ColorResource.color191919,
+                                  fontWeight: FontWeight.w400,
+                                  fontFamily: 'Poppins',
+                                  fontSize: 12),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            Pinput(
+                              preFilledWidget: const Text('0'),
+                              controller: _pinCntrl,
+                              separatorBuilder: (index) =>
+                                  const SizedBox(width: 15),
+                              defaultPinTheme: PinTheme(
+                                height: 70,
+                                width: 70,
+                                textStyle: const TextStyle(
+                                  fontSize: 22,
+                                  color: Color.fromRGBO(30, 60, 87, 1),
+                                ),
+                                decoration: BoxDecoration(
+                                  color: ColorResource.lightGrey,
+                                  borderRadius: BorderRadius.circular(19),
+                                  border: Border.all(
+                                      color: ColorResource.lightGrey2),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  Constants.otp2,
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorResource.color000000),
+                                ),
+                                Text(
+                                  Constants.resend,
+                                  style: TextStyle(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: ColorResource.color0063F7),
+                                )
+                              ],
+                            )
+                          ],
                         ),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      const Text(
-                        "anand",
-                        // style: tstyleFormField,
-                      ),
-                    ],
+                        Column(children: [
+                          SizedBox(
+                              height: 45,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                      ColorResource.primaryColor,
+                                    ),
+                                    shape: MaterialStateProperty.all<
+                                        RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                    ),
+                                  ),
+                                  onPressed: () {},
+                                  child: const Text(
+                                    Constants.verify,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: 'Poppins',
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 14),
+                                  ))),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(Constants.agree),
+                              Text(
+                                Constants.tc,
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline),
+                              ),
+                              Text(' & '),
+                              Text(
+                                Constants.privacy,
+                                style: TextStyle(
+                                    decoration: TextDecoration.underline),
+                              )
+                            ],
+                          )
+                        ]),
+                      ],
+                    ),
                   ),
                 ),
               ),
             );
           }),
-    );
-  }
-  otpScreen() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Align(
-          alignment: Alignment.center,
-          child: Text(
-            "Otp",
-            style: TextStyle(
-              fontSize: 35,
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        const Align(
-          alignment: Alignment.center,
-          child: Text(
-            "Hello World! This is a Text Widget.",
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.black,
-            ),
-          ),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height/9,
-          child: PinCodeTextField(
-            autoDisposeControllers: false,
-            appContext: context,
-            length: 4,
-            autoFocus: true,
-            hintCharacter: '0',
-            // obscureText: '!state.isOTPShow!',
-            obscuringCharacter: "*",
-            animationType: AnimationType.fade,
-            keyboardType: TextInputType.number,
-            inputFormatters: <TextInputFormatter>[
-              FilteringTextInputFormatter.digitsOnly
-            ],
-            pinTheme: PinTheme(
-              shape: PinCodeFieldShape.box,
-              borderRadius: BorderRadius.circular(5),
-              fieldHeight: 70,
-              fieldWidth: 80,
-              activeColor:Colors.grey,
-              inactiveColor:Colors.grey,
-              selectedColor:Colors.black,
-              // activeFillColor: Colors.transparent,
-            ),
-            // animationDuration: const Duration(milliseconds: 300),
-            // backgroundColor: Colors.blue.shade50,
-            // enableActiveFill: true,
-            controller: mobileNo,
-            onCompleted: (v) {},
-            beforeTextPaste: (text) {
-              debugPrint("Allowing to paste $text");
-              return true;
-            },
-          ),
-        ),
-        const Align(
-          alignment: Alignment.center,
-          child: Text(
-            "Hello World! This is a Text Widget.",
-            style: TextStyle(
-              fontSize: 15,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ],
     );
   }
 }
