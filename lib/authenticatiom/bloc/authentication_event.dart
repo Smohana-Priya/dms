@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 
 import '../../utils/base_equatable.dart';
 
-
 @immutable
 abstract class AuthenticationEvent extends BaseEquatable {}
 

@@ -1,4 +1,5 @@
 class ImageResource {
+  static const String flag = 'assets/png/flag.png';
   static const String imagePro = 'assets/png/imagePro.png';
   static const String videoPro = 'assets/png/videoPro.png';
   static const String apiPro = 'assets/png/apiPro.png';
@@ -30,10 +31,11 @@ class ImageResource {
   static const String ocrImage = 'assets/png/ocr_image.png';
   static const String mvmImage = 'assets/png/mvm_image.png';
   static const String videoImage = 'assets/png/video_image.png';
-  static const String ukLicence= 'assets/png/uk_licence.png';
-  static const String ukDriving= 'assets/png/uk_driving.png';
+  static const String ukLicence = 'assets/png/uk_licence.png';
+  static const String ukDriving = 'assets/png/uk_driving.png';
   static const String ageSplash = 'assets/png/age_splash.png';
-  static const String imageToImageSplash = 'assets/png/image_to_image_splash.png';
+  static const String imageToImageSplash =
+      'assets/png/image_to_image_splash.png';
   static const String videoImageSplash = 'assets/png/video_image_splash.png';
   static const String background = 'assets/png/background.png';
   static const String camera1 = 'assets/svg/camera1.svg';
