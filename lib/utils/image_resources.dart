@@ -1,5 +1,7 @@
 class ImageResource {
   static const String flag = 'assets/png/flag.png';
+  static const String back = 'assets/png/back.png';
+  static const String profile = 'assets/png/profile.png';
   static const String imagePro = 'assets/png/imagePro.png';
   static const String videoPro = 'assets/png/videoPro.png';
   static const String apiPro = 'assets/png/apiPro.png';
@@ -7,6 +9,10 @@ class ImageResource {
   static const String homes = 'assets/png/homes.png';
   static const String arrow = 'assets/png/arrow.png';
   static const String arrow1 = 'assets/png/arrow1.png';
+  static const String vehicle1 = 'assets/png/vehicle1.png';
+  static const String vehicle2 = 'assets/png/vehicle2.png';
+  static const String service = 'assets/png/service.png';
+  static const String spare = 'assets/png/spare.png';
   static const String error = 'assets/png/error.png';
   static const String arrowBase = 'assets/png/arrowbase.png';
   static const String upload = 'assets/png/upload.png';

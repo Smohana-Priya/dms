@@ -15,7 +15,17 @@ class Constants {
   static const String otp2 = "Don't receive the OTP ? ";
   static const String enterCode =
       "Enter the code form the SMS we to +91 9345*****51";
+  static const String mainManu = 'Main Menu';
+  static const String navManu = 'Nav Menu';
+  static const String aboutVahicle = 'About Vahicle';
+  static const String name = 'Arun Ram';
+  static const String sniper = 'Sniper 5G';
+  static const String service = 'Service / Warranty';
+  static const String spare = 'Spare / Accessories';
+  static const String chissNo = 'Chiss No : C-98765';
   static const String success = 'success';
+  static const String mobileNo = 'Mobile No : 9080706050';
+
   static const String success2 = 'SUCCESS';
   static const String failure = 'failed';
   static const String mpin = 'mpin';

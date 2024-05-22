@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +21,6 @@ class _AboutVehicleScreenState extends State<AboutVehicleScreen> {
     print('===========');
     super.initState();
     bloc = BlocProvider.of<AboutVehicleBloc>(context);
-
   }
 
   @override
@@ -38,28 +35,23 @@ class _AboutVehicleScreenState extends State<AboutVehicleScreen> {
               return const Center(
                 child: Text('New DAT888888888888888888888A'),
               );
-            } else if (state is SuccessState) {
-
-            }
-            return  SafeArea(
+            } else if (state is SuccessState) {}
+            return SafeArea(
               child: Scaffold(
                 appBar: AppBar(
                     backgroundColor: ColorResource.color0A077C,
                     // centerTitle: true,
-                    title: Text("Login Page",
-                      style:TextStyle(fontSize: 12)
-                    )),
-                body:
-                Center(
-                  child:
-                  Column(
-
+                    title: Text("Login Page", style: TextStyle(fontSize: 12))),
+                body: Center(
+                  child: Column(
                     children: [
                       Container(
                         padding: EdgeInsets.all(50),
-                        child: Text('NEWSIT - READ', style: TextStyle(fontSize: 25, color: Colors.black),),
+                        child: Text(
+                          'NEWSIT - READ',
+                          style: TextStyle(fontSize: 25, color: Colors.black),
+                        ),
                       ),
-
                     ],
                   ),
                 ),

@@ -140,10 +140,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: ElevatedButton(
                                   style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStateProperty.all<Color>(
+                                        WidgetStateProperty.all<Color>(
                                       ColorResource.primaryColor,
                                     ),
-                                    shape: MaterialStateProperty.all<
+                                    shape: WidgetStateProperty.all<
                                         RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),

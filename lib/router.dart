@@ -15,6 +15,7 @@ class AppRoutes {
   static const String dashboardScreen = 'dashboard_screen';
   static const String loginScreen = 'login_screen';
   static const String otpScreen = 'otp_screen';
+  static const String aboutVahicle = 'about_vehicle';
 }
 
 Route<dynamic>? getRoute(RouteSettings settings) {
@@ -22,6 +23,8 @@ Route<dynamic>? getRoute(RouteSettings settings) {
     case AppRoutes.loginScreen:
       return _buildLoginScreen();
     case AppRoutes.otpScreen:
+      return _buildOtpScreen();
+    case AppRoutes.aboutVahicle:
       return _buildOtpScreen();
   }
   return null;
@@ -37,22 +40,32 @@ Route<dynamic> _buildOtpScreen() {
       builder: (BuildContext context) => PageBuilder.buildOtpScreen());
 }
 
+Route<dynamic> _buildAboutVahicleScreen() {
+  return MaterialPageRoute(
+      builder: (BuildContext context) => PageBuilder.buildOtpScreen());
+}
 
 class PageBuilder {
   static Widget buildLoginScreen() {
     return BlocProvider(
-        create: (BuildContext context) => LoginBloc()
-          ..add(LoginInitialEvent(context: context)),
+        create: (BuildContext context) =>
+            LoginBloc()..add(LoginInitialEvent(context: context)),
         child: const LoginScreen());
   }
+
   static Widget buildOtpScreen() {
     return BlocProvider(
-        create: (BuildContext context) => OTPBloc()
-          ..add(OTPInitialEvent(context: context)),
+        create: (BuildContext context) =>
+            OTPBloc()..add(OTPInitialEvent(context: context)),
         child: const OTPScreen());
   }
 
-
+  static Widget buildAboutVahicle() {
+    return BlocProvider(
+        create: (BuildContext context) =>
+            OTPBloc()..add(OTPInitialEvent(context: context)),
+        child: const OTPScreen());
+  }
 }
 
 Widget addAuthBloc(BuildContext context, Widget widget) {
@@ -73,7 +86,7 @@ Widget addAuthBloc(BuildContext context, Widget widget) {
         }
       }
       if (state is AuthenticationAuthenticated) {
-       /* while (Navigator.canPop(context)) {
+        /* while (Navigator.canPop(context)) {
           Navigator.pop(context);
         }*/
       }
@@ -108,8 +121,7 @@ Widget addAuthBloc(BuildContext context, Widget widget) {
               ),
             ),
           );
-        }
-        else {
+        } else {
           return widget;
         }
       },

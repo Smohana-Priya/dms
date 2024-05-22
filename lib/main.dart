@@ -12,8 +12,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'authenticatiom/bloc/authentication_bloc.dart';
 import 'authenticatiom/bloc/authentication_event.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
@@ -49,7 +47,6 @@ class _MyAppState extends CoreWidgetsState<MyApp> {
     //toCheckInternetConnection();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +84,7 @@ class _MyAppState extends CoreWidgetsState<MyApp> {
           },
           onGenerateRoute: getRoute,
           debugShowCheckedModeBanner: false,
-          home:addAuthBloc(
+          home: addAuthBloc(
             context,
             const Splash(),
           ),
