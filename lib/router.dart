@@ -1,3 +1,4 @@
+import 'package:dms_dealers/screens/about_vehicle/about_vahicle.dart';
 import 'package:dms_dealers/screens/login_page/login_bloc.dart';
 import 'package:dms_dealers/screens/login_page/login_event.dart';
 import 'package:dms_dealers/screens/login_page/login_screen.dart';
@@ -16,6 +17,7 @@ class AppRoutes {
   static const String loginScreen = 'login_screen';
   static const String otpScreen = 'otp_screen';
   static const String aboutVahicle = 'about_vehicle';
+  static const String profile = 'profile_screen';
 }
 
 Route<dynamic>? getRoute(RouteSettings settings) {
@@ -25,7 +27,9 @@ Route<dynamic>? getRoute(RouteSettings settings) {
     case AppRoutes.otpScreen:
       return _buildOtpScreen();
     case AppRoutes.aboutVahicle:
-      return _buildOtpScreen();
+      return _buildAboutVahicleScreen();
+    // case AppRoutes.profile:
+    //   return _buildProfileScreen();
   }
   return null;
 }
@@ -42,8 +46,13 @@ Route<dynamic> _buildOtpScreen() {
 
 Route<dynamic> _buildAboutVahicleScreen() {
   return MaterialPageRoute(
-      builder: (BuildContext context) => PageBuilder.buildOtpScreen());
+      builder: (BuildContext context) => PageBuilder.buildAboutVahicle());
 }
+
+// Route<dynamic> _buildProfileScreen() {
+//   return MaterialPageRoute(
+//       builder: (BuildContext context) => PageBuilder.buildProfileScreen());
+// }
 
 class PageBuilder {
   static Widget buildLoginScreen() {
@@ -61,11 +70,15 @@ class PageBuilder {
   }
 
   static Widget buildAboutVahicle() {
-    return BlocProvider(
-        create: (BuildContext context) =>
-            OTPBloc()..add(OTPInitialEvent(context: context)),
-        child: const OTPScreen());
+    return const AboutVahicle();
   }
+
+  // static Widget buildProfileScreen() {
+  //   return BlocProvider(
+  //       create: (BuildContext context) =>
+  //           OTPBloc()..add(OTPInitialEvent(context: context)),
+  //       child: const OTPScreen());
+  // }
 }
 
 Widget addAuthBloc(BuildContext context, Widget widget) {
