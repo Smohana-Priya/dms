@@ -1,4 +1,5 @@
 import 'package:dms_dealers/screens/drawer/drawer_bloc.dart';
+import 'package:dms_dealers/screens/profile/profile.dart';
 import 'package:dms_dealers/utils/color_resources.dart';
 import 'package:dms_dealers/utils/contants.dart';
 import 'package:dms_dealers/utils/image_resources.dart';
@@ -70,13 +71,23 @@ class _DmsDrawerState extends State<DmsDrawer> {
                 const SizedBox(
                   height: 20,
                 ),
-                Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25),
-                        color: ColorResource.lightGrey),
-                    child: const MainMenuCard(
-                      img: ImageResource.profile,
-                    )),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Profile()));
+                  },
+                  child: Container(
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: ColorResource.lightGrey),
+                      child: const MainMenuCard(
+                        img: ImageResource.profile,
+                        title: Constants.name,
+                        subTitle: Constants.mobileNo,
+                      )),
+                ),
                 const SizedBox(
                   height: 15,
                 ),
@@ -88,6 +99,8 @@ class _DmsDrawerState extends State<DmsDrawer> {
                     ),
                     child: const MainMenuCard(
                       img: ImageResource.vehicle1,
+                      title: Constants.sniper,
+                      subTitle: Constants.chissNo,
                     )),
                 const SizedBox(
                   height: 30,

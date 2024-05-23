@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
-import '../utils/contants.dart';
-
 class MainMenuCard extends StatelessWidget {
   final String img;
-  const MainMenuCard({super.key, required this.img});
+
+  final String title;
+  final String subTitle;
+  final bool isProfile;
+  const MainMenuCard(
+      {super.key,
+      required this.img,
+      required this.title,
+      required this.subTitle,
+      this.isProfile = false});
 
   @override
   Widget build(BuildContext context) {
@@ -22,23 +29,23 @@ class MainMenuCard extends StatelessWidget {
           const SizedBox(
             width: 15,
           ),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                Constants.name,
-                style: TextStyle(
+                title,
+                style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w500,
                     fontSize: 12,
                     color: Colors.black),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Text(
-                Constants.mobileNo,
-                style: TextStyle(
+                subTitle,
+                style: const TextStyle(
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
@@ -47,7 +54,20 @@ class MainMenuCard extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          IconButton(onPressed: () {}, icon: const Icon(Icons.navigate_next)),
+          isProfile
+              ? const Padding(
+                  padding: EdgeInsets.only(right: 10),
+                  child: Text(
+                    'View',
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.red),
+                  ),
+                )
+              : IconButton(
+                  onPressed: () {}, icon: const Icon(Icons.navigate_next)),
         ],
       ),
     );
