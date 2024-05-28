@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 
 import '../../utils/contants.dart';
 import '../../utils/image_resources.dart';
-import '../drawer/drawer.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -253,11 +252,12 @@ class _ProfileState extends State<Profile> {
             const SizedBox(
               height: 10,
             ),
-            _buildDetails(),
+            buildDetails('Name', 'Prama', 'Mobile No.', '9876543210',
+                'Designation', 'Manager', 'Email ID', 'arunr@gmail.com'),
             const SizedBox(
               height: 10,
             ),
-            _buildDetailText(
+            buildDetailText(
                 'Address', '4140 Parker Rd. Allentown, New Mexico 31134')
           ],
         ),
@@ -266,13 +266,12 @@ class _ProfileState extends State<Profile> {
   }
 }
 
-Widget _buildDetails() {
+Widget buildDetails(String label1, String value1, String label2, String value2,
+    String label3, String value3, String label4, String value4) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      _buildDetailColumn('Name', 'Prama', 'Mobile No.', '9876543210'),
-      _buildDetailColumn(
-          'Designation', 'Manager', 'Email ID', 'arunr@gmail.com'),
+      Expanded(child: _buildDetailColumn(label1, value1, label2, value2)),
+      Expanded(child: _buildDetailColumn(label3, value3, label4, value4)),
     ],
   );
 }
@@ -282,14 +281,14 @@ Widget _buildDetailColumn(
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      _buildDetailText(label1, value1),
+      buildDetailText(label1, value1),
       const SizedBox(height: 10),
-      _buildDetailText(label2, value2),
+      buildDetailText(label2, value2),
     ],
   );
 }
 
-Widget _buildDetailText(String label, String value) {
+Widget buildDetailText(String label, String value) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [

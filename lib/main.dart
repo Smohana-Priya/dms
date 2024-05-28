@@ -24,7 +24,7 @@ void main() async {
       create: (BuildContext context) {
         return AuthenticationBloc()..add(AppStarted(context: context));
       },
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }

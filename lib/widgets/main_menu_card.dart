@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
+import '../screens/profile/profile_view.dart';
+
 class MainMenuCard extends StatelessWidget {
   final String img;
 
   final String title;
   final String subTitle;
   final bool isProfile;
-  const MainMenuCard(
-      {super.key,
-      required this.img,
-      required this.title,
-      required this.subTitle,
-      this.isProfile = false});
+  final bool isDrawer;
+  const MainMenuCard({
+    super.key,
+    required this.img,
+    required this.title,
+    required this.subTitle,
+    this.isProfile = false,
+    this.isDrawer = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,19 +60,29 @@ class MainMenuCard extends StatelessWidget {
           ),
           const Spacer(),
           isProfile
-              ? const Padding(
-                  padding: EdgeInsets.only(right: 10),
-                  child: Text(
-                    'View',
-                    style: TextStyle(
-                        fontFamily: 'Inter',
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.red),
+              ? Padding(
+                  padding: const EdgeInsets.only(right: 10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProfileView()));
+                    },
+                    child: const Text(
+                      'View',
+                      style: TextStyle(
+                          fontFamily: 'Inter',
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.red),
+                    ),
                   ),
                 )
-              : IconButton(
-                  onPressed: () {}, icon: const Icon(Icons.navigate_next)),
+              : isDrawer
+                  ? IconButton(
+                      onPressed: () {}, icon: const Icon(Icons.navigate_next))
+                  : Container()
         ],
       ),
     );

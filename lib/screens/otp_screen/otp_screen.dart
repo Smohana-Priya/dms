@@ -133,7 +133,7 @@ class _OTPScreenState extends State<OTPScreen> {
                                       fontFamily: 'Poppins',
                                       fontSize: 12,
                                       fontWeight: FontWeight.w400,
-                                      color: ColorResource.color0063F7),
+                                      color: ColorResource.blue),
                                 )
                               ],
                             )

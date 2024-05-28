@@ -86,6 +86,7 @@ class _DmsDrawerState extends State<DmsDrawer> {
                         img: ImageResource.profile,
                         title: Constants.name,
                         subTitle: Constants.mobileNo,
+                        isDrawer: true,
                       )),
                 ),
                 const SizedBox(
