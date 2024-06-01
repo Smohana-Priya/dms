@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'authenticatiom/bloc/authentication_bloc.dart';
 import 'authenticatiom/bloc/authentication_event.dart';
+import 'screens/about_vehicle/about_vahicle.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -84,10 +85,11 @@ class _MyAppState extends CoreWidgetsState<MyApp> {
           },
           onGenerateRoute: getRoute,
           debugShowCheckedModeBanner: false,
-          home: addAuthBloc(
-            context,
-            const Splash(),
-          ),
+          // home: addAuthBloc(
+          //   context,
+          //   const Splash(),
+          // ),
+          home: AboutVahicle(),
         );
       },
     );

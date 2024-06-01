@@ -3,8 +3,10 @@ class ImageResource {
   static const String back = 'assets/png/back.png';
   static const String info = 'assets/png/info.png';
   static const String profile = 'assets/png/profile.png';
+  static const String build = 'assets/png/build.png';
   static const String imagePro = 'assets/png/imagePro.png';
   static const String ev = 'assets/png/ev.png';
+  static const String warranty = 'assets/png/warranty.png';
   static const String check = 'assets/png/check.png';
   static const String cmnt = 'assets/png/cmnt.png';
   static const String call = 'assets/png/call.png';
