@@ -6,6 +6,7 @@ class ImageResource {
   static const String build = 'assets/png/build.png';
   static const String imagePro = 'assets/png/imagePro.png';
   static const String ev = 'assets/png/ev.png';
+  static const String book = 'assets/png/book.png';
   static const String warranty = 'assets/png/warranty.png';
   static const String check = 'assets/png/check.png';
   static const String cmnt = 'assets/png/cmnt.png';

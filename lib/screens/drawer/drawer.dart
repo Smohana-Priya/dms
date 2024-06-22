@@ -1,5 +1,7 @@
+import 'package:dms_dealers/screens/about_vehicle/about_vahicle.dart';
 import 'package:dms_dealers/screens/drawer/drawer_bloc.dart';
 import 'package:dms_dealers/screens/profile/profile.dart';
+import 'package:dms_dealers/screens/service_waranty.dart/service_warranty.dart';
 import 'package:dms_dealers/utils/color_resources.dart';
 import 'package:dms_dealers/utils/contants.dart';
 import 'package:dms_dealers/utils/image_resources.dart';
@@ -24,6 +26,26 @@ class _DmsDrawerState extends State<DmsDrawer> {
     {'img': ImageResource.service, 'title': Constants.service},
     {'img': ImageResource.spare, 'title': Constants.spare}
   ];
+  void navigateToScreen(String title) {
+    switch (title) {
+      case Constants.aboutVahicle:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const AboutVahicle()),
+        );
+        break;
+      case Constants.service:
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ServiceWarranty()),
+        );
+        break;
+      // case Constants.spare:
+      //   targetScreen = SpareScreen(); // replace with your actual screen
+      //   break;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -124,9 +146,11 @@ class _DmsDrawerState extends State<DmsDrawer> {
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: NavMenuCard(
-                            img: navMenu[index]['img']!,
-                            title: navMenu[index]['title']!,
-                          ),
+                              img: navMenu[index]['img']!,
+                              title: navMenu[index]['title']!,
+                              onTap: () {
+                                navigateToScreen(navMenu[index]['title']!);
+                              }),
                         );
                       }),
                 )

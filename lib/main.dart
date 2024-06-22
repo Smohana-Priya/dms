@@ -88,7 +88,6 @@ class _MyAppState extends CoreWidgetsState<MyApp> {
             context,
             const Splash(),
           ),
-     
         );
       },
     );
