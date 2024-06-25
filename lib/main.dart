@@ -1,5 +1,4 @@
 import 'package:dms_dealers/router.dart';
-import 'package:dms_dealers/screens/splash/splash_screen.dart';
 import 'package:dms_dealers/utils/app_themes.dart';
 import 'package:dms_dealers/utils/color_resources.dart';
 import 'package:dms_dealers/widgets/bloc.dart';
@@ -11,8 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'authenticatiom/bloc/authentication_bloc.dart';
 import 'authenticatiom/bloc/authentication_event.dart';
-
-
+import 'screens/splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +24,7 @@ void main() async {
       create: (BuildContext context) {
         return AuthenticationBloc()..add(AppStarted(context: context));
       },
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
@@ -49,7 +47,6 @@ class _MyAppState extends CoreWidgetsState<MyApp> {
     //toCheckInternetConnection();
     super.initState();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +84,7 @@ class _MyAppState extends CoreWidgetsState<MyApp> {
           },
           onGenerateRoute: getRoute,
           debugShowCheckedModeBanner: false,
-          home:addAuthBloc(
+          home: addAuthBloc(
             context,
             const Splash(),
           ),

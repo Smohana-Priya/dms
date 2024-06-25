@@ -1,3 +1,4 @@
+import 'package:dms_dealers/screens/about_vehicle/about_vahicle.dart';
 import 'package:dms_dealers/screens/login_page/login_bloc.dart';
 import 'package:dms_dealers/screens/login_page/login_event.dart';
 import 'package:dms_dealers/screens/login_page/login_screen.dart';
@@ -15,6 +16,8 @@ class AppRoutes {
   static const String dashboardScreen = 'dashboard_screen';
   static const String loginScreen = 'login_screen';
   static const String otpScreen = 'otp_screen';
+  static const String aboutVahicle = 'about_vehicle';
+  static const String profile = 'profile_screen';
 }
 
 Route<dynamic>? getRoute(RouteSettings settings) {
@@ -23,6 +26,10 @@ Route<dynamic>? getRoute(RouteSettings settings) {
       return _buildLoginScreen();
     case AppRoutes.otpScreen:
       return _buildOtpScreen();
+    case AppRoutes.aboutVahicle:
+      return _buildAboutVahicleScreen();
+    // case AppRoutes.profile:
+    //   return _buildProfileScreen();
   }
   return null;
 }
@@ -37,22 +44,41 @@ Route<dynamic> _buildOtpScreen() {
       builder: (BuildContext context) => PageBuilder.buildOtpScreen());
 }
 
+Route<dynamic> _buildAboutVahicleScreen() {
+  return MaterialPageRoute(
+      builder: (BuildContext context) => PageBuilder.buildAboutVahicle());
+}
+
+// Route<dynamic> _buildProfileScreen() {
+//   return MaterialPageRoute(
+//       builder: (BuildContext context) => PageBuilder.buildProfileScreen());
+// }
 
 class PageBuilder {
   static Widget buildLoginScreen() {
     return BlocProvider(
-        create: (BuildContext context) => LoginBloc()
-          ..add(LoginInitialEvent(context: context)),
+        create: (BuildContext context) =>
+            LoginBloc()..add(LoginInitialEvent(context: context)),
         child: const LoginScreen());
   }
+
   static Widget buildOtpScreen() {
     return BlocProvider(
-        create: (BuildContext context) => OTPBloc()
-          ..add(OTPInitialEvent(context: context)),
+        create: (BuildContext context) =>
+            OTPBloc()..add(OTPInitialEvent(context: context)),
         child: const OTPScreen());
   }
 
+  static Widget buildAboutVahicle() {
+    return const AboutVahicle();
+  }
 
+  // static Widget buildProfileScreen() {
+  //   return BlocProvider(
+  //       create: (BuildContext context) =>
+  //           OTPBloc()..add(OTPInitialEvent(context: context)),
+  //       child: const OTPScreen());
+  // }
 }
 
 Widget addAuthBloc(BuildContext context, Widget widget) {
@@ -73,7 +99,7 @@ Widget addAuthBloc(BuildContext context, Widget widget) {
         }
       }
       if (state is AuthenticationAuthenticated) {
-       /* while (Navigator.canPop(context)) {
+        /* while (Navigator.canPop(context)) {
           Navigator.pop(context);
         }*/
       }
@@ -108,8 +134,7 @@ Widget addAuthBloc(BuildContext context, Widget widget) {
               ),
             ),
           );
-        }
-        else {
+        } else {
           return widget;
         }
       },
